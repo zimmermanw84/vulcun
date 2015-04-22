@@ -1,7 +1,10 @@
 (function() {
 
+    "use strict";
+
     var socket = io();
     var username = $('#user-name').data('user-name');
+    var payload;
 
     var resetProfileFormFields = function() {
         $('.input-email').val(null);
@@ -17,7 +20,7 @@
 
     var asyncProfileUpdate = function(callback) {
 
-        var payload = {
+        payload = {
             email: $('.input-email').val(),
             country: $('.input-country').val(),
             phone: $('.input-phone').val()
@@ -49,6 +52,42 @@
         })
     };
 
+    // handle search events
+    var asyncSearch = function(callback) {
+        payload = { search: $('#input-search').val() };
+
+        $.post('/search', payload )
+            .success(function(data) {
+                var searchResults = JSON.parse(data);
+                callback(searchResults)
+            })
+    };
+
+    var renderSearchResults = function(searchResults) {
+
+        // Reset search container before every search
+        $('.search-results').html('');
+        $('.search-results-container h1').show();
+        $('#total-results').text(searchResults.length);
+        if (searchResults.length === 0) {
+            $('.search-results').append('<h3>Nothing Found</h3>')
+        };
+
+        for (var i = 0; i < searchResults.length; i++) {
+            $('.search-results').prepend("<li>" + searchResults[i].username + "</li>")
+        }
+
+    };
+
+    var handleSearchEvent = function() {
+      $(".search").on('submit', function(event) {
+          event.preventDefault();
+          asyncSearch( renderSearchResults );
+          $('#input-search').val(null);
+
+      })
+    };
+
     // update dom with welcome message
     socket.on('user connected', function(username) {
         $(".update-container").append("<p>" + username + " has logged in</p>");
@@ -62,9 +101,10 @@
     });
 
     // On page load send username to server
-    $(document).ready(function(){
+    $(function(){
         socket.emit('user connected', username);
         handleUpdateProfileEvent();
+        handleSearchEvent();
     });
 
 

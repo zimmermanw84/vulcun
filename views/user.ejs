@@ -14,20 +14,19 @@
     <div class="jumbotron">
         <div class="update-container"></div>
         <h1 id="user-name" data-user-name="<%= user.username %>"><%= user.username %>'s Search Page</h1>
-        <form class="input-group">
-            <span class="input-group-addon" id="basic-addon1">Search</span>
-            <input type="text" class="form-control search" placeholder="Search" aria-describedby="basic-addon1">
+        <form class="input-group search" action="/search" method="POST">
+            <input type="text" name="search" id="input-search" class="form-control" placeholder="Search" aria-describedby="basic-addon1">
             <input type="submit" />
         </form>
     </div>
     <a href="/logout" class="btn btn-default">Logout</a>
-    <div class="jumbotron">
+    <div class="jumbotron" id="update-container">
         <h1>Update Profile</h1>
         <h2>Current Profile Values</h2>
         <ul>
-            <li id="phone"><%= profile.phone %></li>
-            <li id="country"><%= profile.country %></li>
-            <li id="email"><%= profile.email %></li>
+            <li id="phone">Phone: <%= profile.phone %></li>
+            <li id="country">Country: <%= profile.country %></li>
+            <li id="email">Email: <%= profile.email %></li>
         </ul>
         <form class="input-group profile" action="/users/profile" method="POST">
             <span class="input-group-addon" id="basic-addon1">Update Profile</span>
@@ -37,8 +36,10 @@
             <input type="submit" />
         </form>
     </div>
-    <ul class="search-results"></ul>
-
+    <div class="search-results-container">
+        <h1>Search Results: <span id="total-results">0</span> Total</h1>
+        <ul class="search-results"></ul>
+    </div>
 </div>
 <script type="application/javascript" src="/javascripts/socket.js"></script>
 

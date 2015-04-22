@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var models = require('../models');
+var db = require("../models/index");
 
 
 // Auth Middleware
@@ -40,8 +41,16 @@ router.get('/logout', function(req, res) {
 
 // Search Routes
 
-router.get('/search', function(req, res) {
-
+router.post('/search', function(req, res) {
+  var searchParams = JSON.stringify(req.body.search);
+  console.log(searchParams);
+  db.sequelize.query('SELECT * FROM users WHERE profile LIKE ' + "'%"+req.body.search+"%'" , models.user
+  ).then(function(users) {
+        res.end( JSON.stringify(users) )
+      })
+      .fail(function(err) {
+        res.send('Something went wrong. Try again')
+      })
 });
 
 router.post('/users/profile', function(req, res) {

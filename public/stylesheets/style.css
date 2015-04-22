@@ -6,6 +6,10 @@ a {
   color: #00B7FF;
 }
 
+ul {
+  list-style: none;
+}
+
 .update-container {
   /*width: 15em;*/
   /*height: 10em;*/
@@ -25,4 +29,14 @@ a {
 .search {
   max-width: 30%;
   display: inline-block;
+}
+
+.search-results-container ul {
+  max-width: 100%;
+  max-height: 15%;
+  overflow: scroll;
+}
+
+.search-results-container h1 {
+  display: none;
 }
