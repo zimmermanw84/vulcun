@@ -14,10 +14,33 @@ var authUser = function(req, res, next) {
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index.ejs', { title: 'Express' });
+  res.render('index.ejs');
+});
+
+// Handle Session. Would break these out into there own routes files in real world app
+
+router.post('/login', function(req, res) {
+  // Would normally find by email for uniqueness or make username validation for uniqueness
+  // Would never pass direct form values directly to query >.<
+
+  var user = models.user.findOne({ where: { username: req.body.username } })
+      .success(function(user) {
+        req.session.user = user.dataValues;
+        res.redirect('/users')
+      })
+      .error(function(err) {
+  //    Handle error NO USER Found
+      res.send('No user found')
+  });
+});
+
+router.get('/logout', function(req, res) {
+  req.session = null;
+  res.redirect('/');
 });
 
 
+// Handle user
 router.get('/users', authUser, function(req, res) {
   //console.log(req.session.user);
   res.locals.user = req.session.user;
