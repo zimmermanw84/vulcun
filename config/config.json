@@ -4,7 +4,8 @@
     "password": "chewy",
     "database": "database_development",
     "host": "127.0.0.1",
-    "dialect": "mysql"
+    "dialect": "mysql",
+    "max_allowed_packet": 1000000000
   },
   "test": {
     "username": "root",

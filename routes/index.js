@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var models = require('../models');
 var db = require("../models/index");
+var bcrypt = require('bcryptjs');
+
 
 
 // Auth Middleware
@@ -26,8 +28,12 @@ router.post('/login', function(req, res) {
 
   var user = models.user.findOne({ where: { username: req.body.username } })
       .success(function(user) {
-        req.session.user = user.dataValues;
-        res.redirect('/users')
+        if (bcrypt.compareSync(req.body.password, user.dataValues.password)) {
+            req.session.user = user.dataValues;
+            res.redirect('/users')
+        } else {
+            res.send('Incorrect username or password')
+        }
       })
       .error(function(err) {
       res.send('No user found')
@@ -81,8 +87,17 @@ router.get('/users', authUser, function(req, res) {
 });
 
 router.post('/users', function(req, res) {
-  var user = models.user.build(req.body);
-  if ( user.save() ) {
+
+    // Hash User Password
+    var salt = bcrypt.genSaltSync(10);
+    var hash = bcrypt.hashSync(req.body.password, salt);
+
+    var user = models.user.build({
+        username: req.body.username,
+        password: hash
+    });
+
+    if ( user.save() ) {
     // To optimize I would make this the default field on user model creation
     user.dataValues.profile = JSON.stringify({phone: "none", country: "none", email: "none"});
     req.session.user = user.dataValues;

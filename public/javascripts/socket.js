@@ -13,9 +13,9 @@
     };
 
     var updateProfileDOM = function(userProfile) {
-        $('#phone').text(userProfile.phone);
-        $('#country').text(userProfile.country);
-        $('#email').text(userProfile.email);
+        $('#phone').text("Phone: " + userProfile.phone);
+        $('#country').text("Country: " + userProfile.country);
+        $('#email').text("Email: " + userProfile.email);
     };
 
     var asyncProfileUpdate = function(callback) {

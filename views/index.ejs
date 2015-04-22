@@ -4,28 +4,50 @@
     <title>Coding Challenge</title>
     <link rel="stylesheet" src="/normalize-css.googlecode.com/svn/trunk/normalize.css" />
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <script type="application/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
 </head>
 <body>
-<div class="container">
-    <div class="jumbotron">
-        <h1>Coding Challenge</h1>
+<nav class="navbar  navbar-fixed-top" >
+    <div class="container-fluid" style="background-color: rgba(255,255,255,.8)">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <div class="navbar-brand">Vulcun</div>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+
+                <li>
+                    <form class="navbar-search" action="/login" method="POST">
+                        <input type="text" name="username" placeholder="username" require/>
+                        <input type="password" name="password" placeholder="password" require/>
+                        <button type="submit" class="btn btn-default navbar-btn">Log in</button>
+                    </form>
+                </li>
+                <li class="dropdown">
+                    <a style="color:red" href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Register <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li>
+                            <form class="navbar-search" action="/users" method="POST">
+                                <input for="username" class="form-control" type="text" placeholder="username" name="username" require/>
+                                <input class="form-control" type="password" name="password" placeholder="password" require/>
+                                <button type="submit" class="btn btn-default navbar-btn">Sign up</button>
+                            </form>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div style="position: absolute; left:0; right:0; bottom:0; top:0; background-color:black; ">
+    <div style="width: 50%; height: 400px; background-size: cover;left:50%; top:50%;position:absolute;webkit-transform-translate(-50%, -50%); transform:translate(-50%, -50%); background-position:center;background-image: url('http://i.imgur.com/nVsIbum.gif');">
     </div>
-    <h2 class="page-header">Login</h2>
-    <form class="form-horizontal" role="form" action="/login" method="POST">
-        <h3>username</h3>
-        <input for="username" class="form-control" type="text" name="username" require/>
-        <h3>Password</h3>
-        <input class="form-control" type="password" name="password"require/>
-        <input type="submit" value="Log In"/>
-    </form>
-    <h2 class="page-header">Register</h2>
-    <form class="form-horizontal" action="/users" method="POST">
-        <h3>Username</h3>
-        <input class="form-control" type="text" name="username"require/>
-        <h3>Password</h3>
-        <input for="email" class="form-control" type="password" name="password"require/>
-        <input type="submit" value="Log In - Register"/>
-    </form>
+    <div style="left:50%; webkit-transform-translateX(-50%); transform:translateX(-50%); height: 200px; width: 50%;background-image: url('images/vulcun-logo.gif'); position: absolute; bottom:0;background-size:cover; background-position:center;"></div>
 </div>
+
 </body>
 </html>

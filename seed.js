@@ -3,7 +3,7 @@ var chance = require('chance').Chance();
 
 var model = models.user,
     models = [],
-    count = 11200;
+    count = 25000;
 
 function generateUser(){
     var user = {
@@ -19,5 +19,5 @@ for(var i = 0; i < count; i++){
 }
 
 // create the rows using our generated models.
-return model.bulkCreate(models);
+model.bulkCreate(models);
 

@@ -10,17 +10,47 @@
 </head>
 
 <body>
+<nav class="navbar  navbar-fixed-top" >
+    <div class="container-fluid" style="background-color: rgba(255,255,255,.8)">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <div class="navbar-brand">Vulcun</div>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <form class="navbar-form navbar-left search" role="search">
+                <div class="form-group">
+                    <input type="text" name="search" id="input-search" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+            </form>
+            <div class="navbar-header">
+                <div class="navbar-brand" id="user-name" data-user-name="<%= user.username %>">
+                    Search users by any profile attribute <%= user.username %>
+                </div>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><a href="/logout" class="btn btn-default" style="float:right">Logout</a></li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+
+<div class="background-container">
+    <div class="image-container"></div>
+</div>
+
+<!--<div style="position: absolute; left:0; right:0; bottom:0; top:0; background-color:black; z-index: -1 ">-->
+    <!--<div style="width: 50%; height: 400px; background-size: cover;left:50%; top:50%;position:absolute;webkit-transform-translate(-50%, -50%); transform:translate(-50%, -50%); background-position:center;background-image: url('http://i.imgur.com/nVsIbum.gif');">-->
+    <!--</div>-->
+    <!--<div style="left:50%; webkit-transform-translateX(-50%); transform:translateX(-50%); height: 200px; width: 50%;background-image: url(); position: absolute; bottom:0;background-size:cover; background-position:center;"></div>-->
+
+
+</div>
 <div class="container">
-    <div class="jumbotron">
-        <div class="update-container"></div>
-        <h1 id="user-name" data-user-name="<%= user.username %>"><%= user.username %>'s Search Page</h1>
-        <form class="input-group search" action="/search" method="POST">
-            <input type="text" name="search" id="input-search" class="form-control" placeholder="Search" aria-describedby="basic-addon1">
-            <input type="submit" />
-        </form>
-    </div>
-    <a href="/logout" class="btn btn-default">Logout</a>
-    <div class="jumbotron" id="update-container">
+    <div class="update-container"></div>
+    <div class="jumbotron main">
         <h1>Update Profile</h1>
         <h2>Current Profile Values</h2>
         <ul>
