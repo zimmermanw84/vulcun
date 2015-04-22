@@ -39,6 +39,22 @@ router.get('/logout', function(req, res) {
   res.redirect('/');
 });
 
+router.post('/users/profile', function(req, res) {
+  // FIXME: If user comes from new user route they will not have ID
+  // TODO: Can only update all values at the moment
+  var user = models.user.findOne({ where: { username: req.session.user.username } })
+      .success(function(user) {
+        user.updateAttributes({
+          profile: JSON.stringify(req.body)
+        }).then(function(user){
+          // TODO: Socket Update Profile
+          console.log(user.dataValues.profile);
+          //alert('profile updated!')
+        })
+      });
+  res.redirect('/users')
+});
+
 
 // Handle user
 router.get('/users', authUser, function(req, res) {
@@ -47,7 +63,7 @@ router.get('/users', authUser, function(req, res) {
   res.render('user.ejs');
 });
 
-router.post('/users', function(req, res, next) {
+router.post('/users', function(req, res) {
   var user = models.user.build(req.body);
 
   if ( user.save() ) {
@@ -58,6 +74,7 @@ router.post('/users', function(req, res, next) {
   }
 
 });
+
 
 
 module.exports = router;

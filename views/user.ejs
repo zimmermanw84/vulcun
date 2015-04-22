@@ -10,7 +10,24 @@
     <div class="jumbotron">
         <h1><%= user.username %>'s Search Page</h1>
     </div>
-    <a href="/logout" class="btn btn-default">Logout</a>
+        <a href="/logout" class="btn btn-default">Logout</a>
+
+    <form class="input-group">
+        <span class="input-group-addon" id="basic-addon1">Search</span>
+        <input type="text" class="form-control" placeholder="Search" aria-describedby="basic-addon1">
+        <input type="submit" />
+    </form>
+    <div class="jumbotron">
+        <h1>Update Profile</h1>
+        <form class="input-group" action="/users/profile" method="POST">
+            <span class="input-group-addon" id="basic-addon1">Update Profile</span>
+            <input type="text" class="form-control" name="phone" placeholder="phone" aria-describedby="basic-addon1">
+            <input type="text" class="form-control" placeholder="email" name="email" aria-describedby="basic-addon1"/>
+            <input type="text" class="form-control" placeholder="country" name="country" aria-describedby="basic-addon1"/>
+            <input type="submit" />
+        </form>
+    </div>
+
 </div>
 </body>
 </html>
