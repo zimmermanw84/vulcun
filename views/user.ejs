@@ -1,33 +1,46 @@
-<!DOCTYPE html>
 <html>
 <head>
     <title>Coding Challenge</title>
+    <script type="application/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
     <link rel="stylesheet" src="/normalize-css.googlecode.com/svn/trunk/normalize.css" />
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"/>
 </head>
+
 <body>
 <div class="container">
     <div class="jumbotron">
-        <h1><%= user.username %>'s Search Page</h1>
-    </div>
-        <a href="/logout" class="btn btn-default">Logout</a>
-
-    <form class="input-group">
-        <span class="input-group-addon" id="basic-addon1">Search</span>
-        <input type="text" class="form-control" placeholder="Search" aria-describedby="basic-addon1">
-        <input type="submit" />
-    </form>
-    <div class="jumbotron">
-        <h1>Update Profile</h1>
-        <form class="input-group" action="/users/profile" method="POST">
-            <span class="input-group-addon" id="basic-addon1">Update Profile</span>
-            <input type="text" class="form-control" name="phone" placeholder="phone" aria-describedby="basic-addon1">
-            <input type="text" class="form-control" placeholder="email" name="email" aria-describedby="basic-addon1"/>
-            <input type="text" class="form-control" placeholder="country" name="country" aria-describedby="basic-addon1"/>
+        <div class="update-container"></div>
+        <h1 id="user-name" data-user-name="<%= user.username %>"><%= user.username %>'s Search Page</h1>
+        <form class="input-group">
+            <span class="input-group-addon" id="basic-addon1">Search</span>
+            <input type="text" class="form-control search" placeholder="Search" aria-describedby="basic-addon1">
             <input type="submit" />
         </form>
     </div>
+    <a href="/logout" class="btn btn-default">Logout</a>
+    <div class="jumbotron">
+        <h1>Update Profile</h1>
+        <h2>Current Profile Values</h2>
+        <ul>
+            <li id="phone"><%= profile.phone %></li>
+            <li id="country"><%= profile.country %></li>
+            <li id="email"><%= profile.email %></li>
+        </ul>
+        <form class="input-group profile" action="/users/profile" method="POST">
+            <span class="input-group-addon" id="basic-addon1">Update Profile</span>
+            <input type="text" class="form-control input-phone" name="phone" placeholder="phone" aria-describedby="basic-addon1">
+            <input type="text" class="form-control input-email" placeholder="email" name="email" aria-describedby="basic-addon1"/>
+            <input type="text" class="form-control input-country" placeholder="country" name="country" aria-describedby="basic-addon1"/>
+            <input type="submit" />
+        </form>
+    </div>
+    <ul class="search-results"></ul>
 
 </div>
+<script type="application/javascript" src="/javascripts/socket.js"></script>
+
 </body>
 </html>

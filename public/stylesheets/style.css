@@ -1,8 +1,28 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
   color: #00B7FF;
+}
+
+.update-container {
+  /*width: 15em;*/
+  /*height: 10em;*/
+  margin-left: 60%;
+  position: absolute;
+  background-color: white;
+  opacity: .5;
+}
+
+.update-container p {
+  color: black;
+  margin-left: 1em;
+  margin-top: .5em;
+  padding-right: 1em;
+}
+
+.search {
+  max-width: 30%;
+  display: inline-block;
 }

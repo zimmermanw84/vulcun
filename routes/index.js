@@ -12,7 +12,7 @@ var authUser = function(req, res, next) {
   }
 };
 
-/* GET home page. */
+ // GET home page.
 router.get('/', function(req, res, next) {
   res.render('index.ejs');
 });
@@ -29,7 +29,6 @@ router.post('/login', function(req, res) {
         res.redirect('/users')
       })
       .error(function(err) {
-  //    Handle error NO USER Found
       res.send('No user found')
   });
 });
@@ -39,34 +38,44 @@ router.get('/logout', function(req, res) {
   res.redirect('/');
 });
 
-router.post('/users/profile', function(req, res) {
-  // FIXME: If user comes from new user route they will not have ID
-  // TODO: Can only update all values at the moment
-  var user = models.user.findOne({ where: { username: req.session.user.username } })
-      .success(function(user) {
-        user.updateAttributes({
-          profile: JSON.stringify(req.body)
-        }).then(function(user){
-          // TODO: Socket Update Profile
-          console.log(user.dataValues.profile);
-          //alert('profile updated!')
-        })
-      });
-  res.redirect('/users')
+// Search Routes
+
+router.get('/search', function(req, res) {
+
 });
 
+router.post('/users/profile', function(req, res) {
+  // TODO: Can only update all values at the moment
+  var user = models.user.findOne({ where: { username: req.session.user.username } })
+      .then(function(user) {
+        user.updateAttributes({
+          profile: JSON.stringify(req.body)
+        }).then(function(user) {
+          res.end(JSON.stringify(req.body));
+        }).fail(function (err) {
+          res.send('Something went wrong. Try again')
+        })
+      });
+});
 
-// Handle user
+// Handle user auth and creation
 router.get('/users', authUser, function(req, res) {
-  //console.log(req.session.user);
   res.locals.user = req.session.user;
-  res.render('user.ejs');
+  var user = models.user.findOne({ where: { username: req.session.user.username } })
+      .then(function(user) {
+        res.locals.profile = JSON.parse(user.dataValues.profile);
+        res.render('user.ejs');
+      })
+      .fail(function (err) {
+        res.send('Something went wrong. Try again')
+      });
 });
 
 router.post('/users', function(req, res) {
   var user = models.user.build(req.body);
-
   if ( user.save() ) {
+    // To optimize I would make this the default field on user model creation
+    user.dataValues.profile = JSON.stringify({phone: "none", country: "none", email: "none"});
     req.session.user = user.dataValues;
     res.redirect('/users');
   } else {
