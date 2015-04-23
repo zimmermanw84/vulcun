@@ -74,14 +74,16 @@
         // Reset search container before every search
         $('.search-results').html('');
         $('.search-results-container h1').show();
-        console.log(searchResults);
+        $('.search-results-container h3').show();
         $('#total-results').text(searchResults.length);
         if (searchResults.length === 0) {
             $('.search-results').append('<h3>Nothing Found</h3>')
         };
 
         for (var i = 0; i < searchResults.length; i++) {
-            $('.search-results').prepend("<li>" + searchResults[i].username + "</li>")
+            $('.search-results').prepend(
+                "<li>" + searchResults[i].id + " " + searchResults[i].username + "</li>"
+            )
         }
 
     };
@@ -103,7 +105,6 @@
     });
 
     socket.on('update profile', function(message) {
-        console.log(message);
         $(".update-container").append('<p>' + message + '<p>' );
         timoutSocketMessage()
     });

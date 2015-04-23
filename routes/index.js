@@ -59,6 +59,7 @@ router.post('/search', function(req, res) {
       })
 });
 
+// Update profile
 router.post('/users/profile', function(req, res) {
   // TODO: Can only update all values at the moment
   var user = models.user.findOne({ where: { username: req.session.user.username } })
