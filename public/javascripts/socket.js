@@ -76,7 +76,6 @@
         $('.search-results-container h1').show();
         console.log(searchResults);
         $('#total-results').text(searchResults.length);
-        //$("#search-button").html('<button type="submit" id="search-button" class="btn btn-default">Submit</button>');
         if (searchResults.length === 0) {
             $('.search-results').append('<h3>Nothing Found</h3>')
         };
@@ -91,7 +90,6 @@
       $(".search").on('submit', function(event) {
           event.preventDefault();
           $('#searching-pic').show();
-          //$("#search-button").html('<img id="search-button" src="http://www.bba-reman.com/images/fbloader.gif" />');
           asyncSearch( renderSearchResults );
           $('#input-search').val(null);
 

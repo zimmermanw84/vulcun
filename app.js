@@ -7,8 +7,7 @@ var bodyParser = require('body-parser');
 var cookieSession = require('cookie-session');
 var routes = require('./routes/index');
 var app = express();
-// super dirty, just testing if heroku is switching my ENV
-//process.env.NODE_ENV = 'production';
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
