@@ -12,10 +12,6 @@
         $('.input-phone').val(null);
     };
 
-    var formValidator = function() {
-        console.log( $() )
-    };
-
     var updateProfileDOM = function(userProfile) {
         $('#phone').text("Phone: " + userProfile.phone);
         $('#country').text("Country: " + userProfile.country);
@@ -82,7 +78,7 @@
         $('#total-results').text(searchResults.length);
         if (searchResults.length === 0) {
             $('.search-results').append('<h3>Nothing Found</h3>')
-        }
+        };
 
         for (var i = 0; i < searchResults.length; i++) {
             $('.search-results').prepend(

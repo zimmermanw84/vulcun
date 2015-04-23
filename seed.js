@@ -3,7 +3,7 @@ var chance = require('chance').Chance();
 
 var model = models.user,
     models = [],
-    count = 200000;
+    count = 500000;
 
 function generateUser(){
     var user = {

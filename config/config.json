@@ -4,8 +4,7 @@
     "password": "chewy",
     "database": "database_development",
     "host": "127.0.0.1",
-    "dialect": "mysql",
-    "max_allowed_packet": 1000000000
+    "dialect": "mysql"
   },
   "test": {
     "username": "root",
@@ -15,9 +14,9 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "b48e847d283bab",
-    "password": "cc37d802",
-    "database": "heroku_191df078ae73d9a",
+    "username": "beab398b3032a3",
+    "password": "e50b3456",
+    "database": "heroku_9e5295d4cc58402",
     "host": "us-cdbr-iron-east-02.cleardb.net",
     "dialect": "mysql"
   }

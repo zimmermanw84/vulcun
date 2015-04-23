@@ -1,6 +1,5 @@
 # Vulcun Coding Challenge
 
-
 ##TODOS:
 
 - Add DB indexing for search optimization
@@ -10,6 +9,4 @@
 - Add Mocha.js for testing
 
 - Pagination for cleanliness
-
-
 

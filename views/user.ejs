@@ -21,7 +21,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <form class="navbar-form navbar-left search" role="search">
                 <div class="form-group">
-                    <input type="text" name="search" id="input-search" class="form-control" placeholder="Search">
+                    <input type="text" name="search" id="input-search" class="form-control" placeholder="Search" required>
                 </div>
                 <button type="submit" id="search-button" class="btn btn-default">Submit</button>
             </form>
@@ -56,9 +56,9 @@
         </ul>
         <form class="input-group profile" action="/users/profile" method="POST">
             <span class="input-group-addon" id="basic-addon1">Update Profile</span>
-            <input type="text" class="form-control input-phone" name="phone" placeholder="phone" aria-describedby="basic-addon1">
-            <input type="text" class="form-control input-email" placeholder="email" name="email" aria-describedby="basic-addon1"/>
-            <input type="text" class="form-control input-country" placeholder="country" name="country" aria-describedby="basic-addon1"/>
+            <input type="text" class="form-control input-phone" name="phone" placeholder="phone" aria-describedby="basic-addon1" required />
+            <input type="text" class="form-control input-email" placeholder="email" name="email" aria-describedby="basic-addon1" required />
+            <input type="text" class="form-control input-country" placeholder="country" name="country" aria-describedby="basic-addon1" required />
             <input type="submit" />
         </form>
     </div>
