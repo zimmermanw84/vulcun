@@ -16,7 +16,7 @@ module.exports = function(sequelize, DataTypes) {
         },
         profile: {
             type: Sequelize.TEXT,
-            field: 'profile'
+            field: 'profile',
         },
 
     });

@@ -75,9 +75,9 @@ router.post('/users/profile', function(req, res) {
 
 // Handle user auth and creation
 router.get('/users', authUser, function(req, res) {
-  res.locals.user = req.session.user;
+
   var user = models.user.findOne({ where: { username: req.session.user.username } })
-      .then(function(user) {
+      .then(function(user) {res.locals.user = req.session.user;
         res.locals.profile = JSON.parse(user.dataValues.profile);
         res.render('user.ejs');
       })
@@ -92,19 +92,17 @@ router.post('/users', function(req, res) {
     var salt = bcrypt.genSaltSync(10);
     var hash = bcrypt.hashSync(req.body.password, salt);
 
-    var user = models.user.build({
+    var user = models.user.create({
         username: req.body.username,
-        password: hash
+        password: hash,
+        profile: JSON.stringify({phone: "none", country: "none", email: "none"})
+    }).then(function(user) {
+            req.session.user = user.dataValues;
+            res.redirect('/users');
+    }).fail(function (err) {
+        res.send('Something went wrong. Try again')
     });
 
-    if ( user.save() ) {
-    // To optimize I would make this the default field on user model creation
-    user.dataValues.profile = JSON.stringify({phone: "none", country: "none", email: "none"});
-    req.session.user = user.dataValues;
-    res.redirect('/users');
-  } else {
-    res.send('Something went wrong. Try again')
-  }
 
 });
 
