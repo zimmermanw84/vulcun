@@ -24,8 +24,7 @@ router.get('/', function(req, res, next) {
 
 router.post('/login', function(req, res) {
   // Would normally find by email for uniqueness or make username validation for uniqueness
-  // Would never pass direct form values directly to query >.<
-
+  // With chance DB seeding cannot guarantee unique username
   var user = models.user.findOne({ where: { username: req.body.username } })
       .success(function(user) {
         if (bcrypt.compareSync(req.body.password, user.dataValues.password)) {
