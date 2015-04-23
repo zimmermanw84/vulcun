@@ -20,13 +20,13 @@ router.get('/', function(req, res, next) {
   res.render('index.ejs');
 });
 
-// Handle Session. Would break these out into there own routes files in real world app
+// Handle Session.
 
 router.post('/login', function(req, res) {
   // Would normally find by email for uniqueness or make username validation for uniqueness
   // With chance DB seeding cannot guarantee unique username
   var user = models.user.findOne({ where: { username: req.body.username } })
-      .success(function(user) {
+      .then(function(user) {
         if (bcrypt.compareSync(req.body.password, user.dataValues.password)) {
             req.session.user = user.dataValues;
             res.redirect('/users')
@@ -34,7 +34,7 @@ router.post('/login', function(req, res) {
             res.send('Incorrect username or password')
         }
       })
-      .error(function(err) {
+      .fail(function(err) {
       res.send('No user found')
   });
 });
