@@ -47,8 +47,15 @@ router.get('/logout', function(req, res) {
 // Search Routes
 
 router.post('/search', function(req, res) {
-  var searchParams = JSON.stringify(req.body.search);
-  db.sequelize.query('SELECT * FROM users WHERE profile LIKE ' + "'%"+req.body.search+"%'" , models.user
+  var searchParams = req.body.search.toLowerCase();
+
+  //  Super hacky query filter TODO: FIND a better way to filter
+
+  if ( searchParams === 'country' || searchParams === 'email' ||searchParams === 'phone') {
+    res.end(JSON.stringify([{ username:'Try searching for an actual place, eamil or phone number please!'}]) )
+  };
+
+  db.sequelize.query('SELECT * FROM users WHERE profile LIKE ' + "'%" + searchParams + "%'" , models.user
   ).then(function(users) {
         res.end( JSON.stringify(users) )
       })
