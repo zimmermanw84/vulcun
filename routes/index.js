@@ -52,6 +52,7 @@ router.post('/search', function(req, res) {
   console.log(searchParams);
   db.sequelize.query('SELECT * FROM users WHERE profile LIKE ' + "'%"+req.body.search+"%'" , models.user
   ).then(function(users) {
+          console.log(users);
         res.end( JSON.stringify(users) )
       })
       .fail(function(err) {

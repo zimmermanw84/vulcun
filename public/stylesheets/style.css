@@ -67,3 +67,9 @@ ul {
   background-position:center;
   background-image: url('http://i.imgur.com/nVsIbum.gif');
 }
+
+#searching-pic {
+  float: left;
+  width: 5em;
+  margin-right: 1em;
+}

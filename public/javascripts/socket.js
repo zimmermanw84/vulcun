@@ -29,8 +29,11 @@
         $.post('/users/profile', payload )
             .success(function(data) {
                 var userProfile = JSON.parse(data);
-                callback(userProfile)
+                callback(userProfile);
             })
+            .error(function(err) {
+                alert("ERROR in PROFILE")
+            }) ;
     };
 
     var timoutSocketMessage = function() {
@@ -59,8 +62,11 @@
         $.post('/search', payload )
             .success(function(data) {
                 var searchResults = JSON.parse(data);
+                $('#searching-pic').hide();
                 callback(searchResults)
-            })
+            }).error(function(err) {
+               alert('ERROR in SEARCH')
+            });
     };
 
     var renderSearchResults = function(searchResults) {
@@ -68,7 +74,9 @@
         // Reset search container before every search
         $('.search-results').html('');
         $('.search-results-container h1').show();
+        console.log(searchResults);
         $('#total-results').text(searchResults.length);
+        //$("#search-button").html('<button type="submit" id="search-button" class="btn btn-default">Submit</button>');
         if (searchResults.length === 0) {
             $('.search-results').append('<h3>Nothing Found</h3>')
         };
@@ -82,6 +90,8 @@
     var handleSearchEvent = function() {
       $(".search").on('submit', function(event) {
           event.preventDefault();
+          $('#searching-pic').show();
+          //$("#search-button").html('<img id="search-button" src="http://www.bba-reman.com/images/fbloader.gif" />');
           asyncSearch( renderSearchResults );
           $('#input-search').val(null);
 
@@ -105,6 +115,7 @@
         socket.emit('user connected', username);
         handleUpdateProfileEvent();
         handleSearchEvent();
+        $('#searching-pic').hide();
     });
 
 

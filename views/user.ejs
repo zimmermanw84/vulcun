@@ -23,7 +23,7 @@
                 <div class="form-group">
                     <input type="text" name="search" id="input-search" class="form-control" placeholder="Search">
                 </div>
-                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="submit" id="search-button" class="btn btn-default">Submit</button>
             </form>
             <div class="navbar-header">
                 <div class="navbar-brand" id="user-name" data-user-name="<%= user.username %>">
@@ -31,6 +31,7 @@
                 </div>
             </div>
             <ul class="nav navbar-nav navbar-right">
+                <img id="searching-pic" src="http://www.bba-reman.com/images/fbloader.gif" />
                 <li><a href="/logout" class="btn btn-default" style="float:right">Logout</a></li>
             </ul>
         </div><!-- /.navbar-collapse -->
