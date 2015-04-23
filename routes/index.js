@@ -48,10 +48,8 @@ router.get('/logout', function(req, res) {
 
 router.post('/search', function(req, res) {
   var searchParams = JSON.stringify(req.body.search);
-  console.log(searchParams);
   db.sequelize.query('SELECT * FROM users WHERE profile LIKE ' + "'%"+req.body.search+"%'" , models.user
   ).then(function(users) {
-          console.log(users);
         res.end( JSON.stringify(users) )
       })
       .fail(function(err) {

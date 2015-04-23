@@ -7,9 +7,7 @@
     var payload;
 
     var resetProfileFormFields = function() {
-        $('.input-email').val(null);
-        $('.input-country').val(null);
-        $('.input-phone').val(null);
+        $('.input-email, .input-country, .input-phone').val(null);
     };
 
     var updateProfileDOM = function(userProfile) {
@@ -73,8 +71,7 @@
 
         // Reset search container before every search
         $('.search-results').html('');
-        $('.search-results-container h1').show();
-        $('.search-results-container h3').show();
+        $('.search-results-container h1, .search-results-container h3').show();
         $('#total-results').text(searchResults.length);
         if (searchResults.length === 0) {
             $('.search-results').append('<h3>Nothing Found</h3>')
