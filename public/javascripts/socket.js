@@ -25,13 +25,13 @@
         };
 
         $.post('/users/profile', payload )
-            .success(function(data) {
-                var userProfile = JSON.parse(data);
-                callback(userProfile);
-            })
-            .error(function(err) {
-                alert("ERROR in PROFILE")
-            }) ;
+        .success(function(data) {
+            var userProfile = JSON.parse(data);
+            callback(userProfile);
+        })
+        .error(function(err) {
+            alert("ERROR in PROFILE")
+        }) ;
     };
 
     var timoutSocketMessage = function() {
@@ -58,13 +58,13 @@
         payload = { search: $('#input-search').val() };
 
         $.post('/search', payload )
-            .success(function(data) {
-                var searchResults = JSON.parse(data);
-                $('#searching-pic').hide();
-                callback(searchResults)
-            }).error(function(err) {
-               alert('ERROR in SEARCH')
-            });
+        .success(function(data) {
+            var searchResults = JSON.parse(data);
+            $('#searching-pic').hide();
+            callback(searchResults)
+        }).error(function(err) {
+         alert('ERROR in SEARCH')
+     });
     };
 
     var renderSearchResults = function(searchResults) {
@@ -80,7 +80,7 @@
         for (var i = 0; i < searchResults.length; i++) {
             $('.search-results').prepend(
                 "<li>" + searchResults[i].id + " " + searchResults[i].username + "</li>"
-            )
+                )
         }
 
     };
@@ -93,7 +93,7 @@
           $('#input-search').val(null);
 
       })
-    };
+  };
 
     // update dom with welcome message
     socket.on('user connected', function(username) {
@@ -105,6 +105,11 @@
         $(".update-container").append('<p>' + message + '<p>' );
         timoutSocketMessage()
     });
+
+    $('#logout').on('click', function(){
+        socket.emit('user logout');
+    });
+
 
     // On page load send username to server
     $(function(){

@@ -117,6 +117,10 @@ models.sequelize.sync().then(function () {
       io.emit('update profile', message)
     })
 
+    socket.on('user logout', function() {
+      socket.server.close()
+    })
+
   });
 
 });
