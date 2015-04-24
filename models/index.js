@@ -6,8 +6,15 @@ var Sequelize = require('sequelize');
 var basename  = path.basename(module.filename);
 var env       = process.env.NODE_ENV || 'development';
 var config    = require(__dirname + '/../config/config.json')[env];
-var sequelize = new Sequelize(config.database, config.username, config.password, config);
 var db        = {};
+
+if ( env === "development" || env === "development" ) {
+  var sequelize = new Sequelize(config.database, config.username, config.password, config);
+}
+
+if ( env === "production" ) {
+  var sequelize = new Sequelize(process.env.DATABASE, process.env.USERNAME, process.env.PASSWORD, config);
+}
 
 fs
   .readdirSync(__dirname)

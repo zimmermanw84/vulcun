@@ -22,7 +22,7 @@
 
 - Try to avoid (at all cost) storing serialized data in a relational database. If you really need to store object or array data going with a NoSQL db might be a better choice.
 
-- Don't check in node_modules
+- Don't check in node_modules, DB Production info
 
 to be continued...
 
