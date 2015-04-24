@@ -20,7 +20,7 @@
 
 - Also dealing with big databases make sure to choose a server and/or hosting platform that can handle data.
 
-- Try to avoid (at all cost) storing serialized data in a relational database. If you really need to store object or array data going with a NoSQL db might be a better choice.
+- Try to avoid (at all cost) storing collection data in a relational database column. If you really need to store object or array data going with a NoSQL db might be a better choice.
 
 - Don't check in node_modules, DB Production info
 

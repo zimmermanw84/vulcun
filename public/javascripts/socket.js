@@ -93,7 +93,7 @@
           $('#input-search').val(null);
 
       })
-  };
+    };
 
     var socketIoEvents = function() {
 
@@ -110,7 +110,8 @@
         $('#logout').on('click', function(){
             socket.emit('user logout');
         });
-    }
+
+    };
 
     // Document ready
     $(function() {

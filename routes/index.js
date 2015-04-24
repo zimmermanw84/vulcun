@@ -79,7 +79,6 @@ router.post('/users/profile', function(req, res) {
       });
 });
 
-// Handle user auth and creation
 router.get('/users', authUser, function(req, res) {
 
   var user = models.user.findOne({ where: { username: req.session.user.username } })
