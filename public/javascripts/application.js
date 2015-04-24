@@ -113,7 +113,7 @@
 
     };
 
-    // Document ready
+    // Document ready. Not really needed due to Script tags at bottom of the page, makes me sleep better at night.
     $(function() {
         socket.emit('user connected', username);
         handleUpdateProfileEvent();
