@@ -1,5 +1,6 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: black;
 }
 
 a {
@@ -34,26 +35,17 @@ ul {
   display: inline-block;
 }
 
-.search-results-container ul {
+.search-results {
   max-width: 100%;
-  max-height: 20%;
+  max-height: 10em;
   overflow: scroll;
   background-color: white;
-}
-
-.search-results {
   border-radius: 8px;
 }
 
 .search-results-container h1 {
   display: none;
   color: white;
-}
-
-.search-results-container h3 {
-  display: none;
-  color: white;
-  margin-left: 2.5em;
 }
 
 .background-container {
@@ -75,7 +67,7 @@ ul {
   webkit-transform-translate(-50%, -50%);
   transform:translate(-50%, -50%);
   background-position:center;
-  background-image: url('http://i.imgur.com/nVsIbum.gif');
+  background-image: url('https://i.imgur.com/nVsIbum.gif');
 }
 
 #searching-pic {

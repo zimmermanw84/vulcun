@@ -1,8 +1,7 @@
+<!DOCTYPE html>
 <html>
 <head>
     <title>Coding Challenge</title>
-    <script type="application/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
-    <script src="/socket.io/socket.io.js"></script>
     <link rel="stylesheet" src="/normalize-css.googlecode.com/svn/trunk/normalize.css" />
     <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
@@ -10,37 +9,37 @@
 </head>
 
 <body>
-<nav class="navbar  navbar-fixed-top" >
-    <div class="container-fluid" style="background-color: rgba(255,255,255,.8)">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <div class="navbar-brand">Vulcun</div>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <form class="navbar-form navbar-left search" role="search">
-                <div class="form-group">
-                    <input type="text" name="search" id="input-search" class="form-control" placeholder="Search" required>
-                </div>
-                <button type="submit" id="search-button" class="btn btn-default">Submit</button>
-            </form>
+    <nav class="navbar  navbar-fixed-top" >
+        <div class="container-fluid" style="background-color: rgba(255,255,255,.8)">
+            <!-- Brand and toggle get grouped for better mobile display -->
             <div class="navbar-header">
-                <div class="navbar-brand" id="user-name" data-user-name="<%= user.username %>">
-                    Search users by any profile attribute <%= user.username %>
-                </div>
+                <div class="navbar-brand">Vulcun</div>
             </div>
-            <ul class="nav navbar-nav navbar-right">
-                <img id="searching-pic" src="http://www.bba-reman.com/images/fbloader.gif" />
-                <li><a href="/logout" class="btn btn-default" style="float:right">Logout</a></li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
 
-<div class="background-container">
-    <div class="image-container"></div>
-</div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <form class="navbar-form navbar-left search" role="search">
+                    <div class="form-group">
+                        <input type="text" name="search" id="input-search" class="form-control" placeholder="Search" required>
+                    </div>
+                    <button type="submit" id="search-button" class="btn btn-default">Submit</button>
+                </form>
+                <div class="navbar-header">
+                    <div class="navbar-brand" id="user-name" data-user-name="<%= user.username %>">
+                        Search users by any profile attribute <%= user.username %>
+                    </div>
+                </div>
+                <ul class="nav navbar-nav navbar-right">
+                    <img id="searching-pic" src="http://www.bba-reman.com/images/fbloader.gif" />
+                    <li><a href="/logout" class="btn btn-default" style="float:right">Logout</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+
+    <div class="background-container">
+        <div class="image-container"></div>
+    </div>
 
 
 </div>
@@ -64,10 +63,11 @@
     </div>
     <div class="search-results-container">
         <h1>Search Results: <span id="total-results">0</span> Total</h1>
-        <h3>  ID &nbsp;NAME</h3>
         <ul class="search-results"></ul>
     </div>
 </div>
+<script type="application/javascript" src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
 <script type="application/javascript" src="/javascripts/socket.js"></script>
 
 </body>
