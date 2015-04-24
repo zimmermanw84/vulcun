@@ -47,10 +47,10 @@ router.get('/logout', function(req, res) {
 // Search Routes
 
 router.post('/search', function(req, res) {
+
   var searchParams = req.body.search.toLowerCase();
 
   //  Super hacky query filter TODO: FIND a better way to filter
-
   if ( searchParams === 'country' || searchParams === 'email' ||searchParams === 'phone') {
     res.end(JSON.stringify([{ username:'Try searching for an actual place, eamil or phone number please!'}]) )
   };

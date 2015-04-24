@@ -103,7 +103,6 @@ models.sequelize.sync().then(function () {
     debug('Express server listening on port ' + server.address().port);
   });
 
-
   var io = require('socket.io').listen(server);
 
   io.on('connection', function(socket) {
@@ -115,10 +114,6 @@ models.sequelize.sync().then(function () {
     socket.on('update profile', function(username) {
       var message = username + " Updated his/her profile";
       io.emit('update profile', message)
-    })
-
-    socket.on('user logout', function() {
-      socket.server.close();
     })
 
   });

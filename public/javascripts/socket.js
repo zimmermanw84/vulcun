@@ -95,28 +95,30 @@
       })
   };
 
-    // update dom with welcome message
-    socket.on('user connected', function(username) {
-        $(".update-container").append("<p>" + username + " has logged in</p>");
-        timoutSocketMessage()
-    });
+    var socketIoEvents = function() {
 
-    socket.on('update profile', function(message) {
-        $(".update-container").append('<p>' + message + '<p>' );
-        timoutSocketMessage()
-    });
+        socket.on('user connected', function(username) {
+            $(".update-container").append("<p>" + username + " has logged in</p>");
+            timoutSocketMessage()
+        });
 
-    $('#logout').on('click', function(){
-        socket.emit('user logout');
-    });
+        socket.on('update profile', function(message) {
+            $(".update-container").append('<p>' + message + '<p>' );
+            timoutSocketMessage()
+        });
 
+        $('#logout').on('click', function(){
+            socket.emit('user logout');
+        });
+    }
 
-    // On page load send username to server
-    $(function(){
+    // Document ready
+    $(function() {
         socket.emit('user connected', username);
         handleUpdateProfileEvent();
         handleSearchEvent();
         $('#searching-pic').hide();
+        socketIoEvents();
     });
 
 
