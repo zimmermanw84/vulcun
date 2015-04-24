@@ -8,7 +8,6 @@ var app = require('../app');
 var debug = require('debug')('vulcun:server');
 var http = require('http');
 var models = require("../models");
-var server;
 
 /**
  * Get port from environment and store in Express.
@@ -99,6 +98,7 @@ function onListening() {
 // Socket.io Server Logic plus DB Sync
 
 models.sequelize.sync().then(function () {
+
   var server = app.listen(app.get('port'), function() {
     debug('Express server listening on port ' + server.address().port);
   });
@@ -118,7 +118,7 @@ models.sequelize.sync().then(function () {
     })
 
     socket.on('user logout', function() {
-      socket.server.close()
+      socket.server.close();
     })
 
   });
