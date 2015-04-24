@@ -14,9 +14,9 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "process.env.USERNAME",
-    "password": "process.env.PASSWORD",
-    "database": "process.env.DATABASE",
+    "username": "b48e847d283bab",
+    "password": "cc37d802",
+    "database": "heroku_191df078ae73d9a",
     "host": "us-cdbr-iron-east-02.cleardb.net",
     "dialect": "mysql"
   }
