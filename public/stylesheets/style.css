@@ -16,11 +16,12 @@ ul {
 }
 
 .update-container {
-  margin-left: 60%;
+  /*margin-left: 60%;*/
+
   position: absolute;
   background-color: white;
   opacity: .9;
-  margin-top: 10%;
+  margin-top: 7%;
 }
 
 .update-container p {
