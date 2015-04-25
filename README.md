@@ -20,7 +20,7 @@
 
 - Also dealing with big databases make sure to choose a server and/or hosting platform that can handle data.
 
-- Try to avoid (at all cost) storing collection data in a relational database column. If you really need to store object or array data going with a NoSQL db might be a better choice.
+- Try to avoid (at all cost) storing collection data in a relational database column. If you really need to store object or array data going with a NoSQL db might be a better choice. Amended: After futher reading to say 'NEVER DO THIS' is not a good way to look at a tool. The use case for storing JSON may be small but never say never.
 
 - Don't check in node_modules, DB Production info
 

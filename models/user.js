@@ -18,7 +18,14 @@ module.exports = function(sequelize, DataTypes) {
             type: Sequelize.TEXT,
             field: 'profile',
         },
-
+        email: {
+            type: Sequelize.STRING,
+            field: 'email',
+        },
+        phone: {
+            type: Sequelize.INTEGER,
+            field: 'phone',
+        }
     });
     return User;
 
