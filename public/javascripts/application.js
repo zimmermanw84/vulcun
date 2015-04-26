@@ -25,13 +25,13 @@
         };
 
         $.post('/users/profile', payload )
-        .success(function(data) {
-            var userProfile = JSON.parse(data);
-            callback(userProfile);
-        })
-        .error(function(err) {
-            alert("ERROR in PROFILE")
-        }) ;
+            .success(function(data) {
+                var userProfile = JSON.parse(data);
+                callback(userProfile);
+            })
+            .error(function(err) {
+                alert("ERROR in PROFILE")
+            });
     };
 
     var timoutSocketMessage = function() {
@@ -58,13 +58,13 @@
         payload = { search: $('#input-search').val() };
 
         $.post('/search', payload )
-        .success(function(data) {
-            var searchResults = JSON.parse(data);
-            $('#searching-pic').hide();
-            callback(searchResults)
-        }).error(function(err) {
-         alert('ERROR in SEARCH')
-     });
+            .success(function(data) {
+                var searchResults = JSON.parse(data);
+                $('#searching-pic').hide();
+                callback(searchResults)
+            }).error(function(err) {
+             alert('ERROR in SEARCH')
+            });
     };
 
     var renderSearchResults = function(searchResults) {
