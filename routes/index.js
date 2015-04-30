@@ -49,7 +49,7 @@ router.get('/logout', function(req, res) {
 router.post('/search', function(req, res) {
   var searchParams = req.body.search.toLowerCase();
 
-  if ( searchParams === 'country' || searchParams === 'email' ||searchParams === 'phone') {
+  if ( searchParams === 'country' || searchParams === 'phone') {
     res.end(JSON.stringify([{ error:'ERROR'}]) )
   };
 
