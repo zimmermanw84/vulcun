@@ -81,17 +81,18 @@
         var firstThousand = searchResults.splice(0, 1000);
         var remaining = searchResults.splice(0, 1000);
 
-
         for (var i = 0, ii = firstThousand.length; i < ii ; i++) {
             $('.search-results').append(
-                        "<li>" + firstThousand[i].id + " " + firstThousand[i].username + "</li>"
+                        "<li>" + JSON.parse(firstThousand[i].profile).email + " - " +
+                        firstThousand[i].username + " - " + JSON.parse(firstThousand[i].profile).phone + "</li>"
                         )
         };
 
         var renderRemainingResults = function(results) {
                 for (var i = 0, ii = results.length; i < ii ; i++) {
                     $('.search-results').append(
-                                "<li>" + results[i].id + " " + results[i].username + "</li>"
+                                "<li>" + JSON.parse(results[i].profile).email + " - " +
+                                results[i].username + " - " + JSON.parse(results[i].profile).phone + "</li>"
                                 )
                 };
         };
