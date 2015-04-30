@@ -69,18 +69,51 @@
 
     var renderSearchResults = function(searchResults) {
 
+        var firstThousand = searchResults.splice(0, 1000);
+        var remaining = searchResults.splice(0, 1000);
+
         // Reset search container before every search
         $('.search-results').html('');
         $('.search-results-container h1').show();
         $('#total-results').text(searchResults.length);
+
         if (searchResults.length === 0) {
             $('.search-results').append('<h3>Nothing Found</h3>')
         };
 
-        for (var i = 0; i < searchResults.length; i++) {
-            $('.search-results').prepend(
-                "<li>" + searchResults[i].id + " " + searchResults[i].username + "</li>"
-                )
+        for (var i = 0, ii = firstThousand.length; i < ii ; i++) {
+            $('.search-results').append(
+                        "<li>" + firstThousand[i].id + " " + firstThousand[i].username + "</li>"
+                        )
+        };
+
+        var renderRemainingResults = function(results) {
+                for (var i = 0, ii = results.length; i < ii ; i++) {
+                    $('.search-results').append(
+                                "<li>" + results[i].id + " " + results[i].username + "</li>"
+                                )
+                };
+        };
+
+        // Hacky Lazy loading
+        function continueRendering() {
+            renderRemainingResults(remaining);
+            remaining = remaining.splice(0, 500)
+        }
+
+        setTimeout(function() {
+            var intervalRendering = setInterval(function() {
+                continueRendering()
+            }, 3000);
+        }, 3000);
+
+
+        function myStopFunction() {
+            clearInterval(intervalRendering);
+        }
+
+        if (remaining.length <= 0) {
+            myStopFunction();
         }
 
     };
