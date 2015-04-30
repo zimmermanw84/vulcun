@@ -69,9 +69,6 @@
 
     var renderSearchResults = function(searchResults) {
 
-        var firstThousand = searchResults.splice(0, 1000);
-        var remaining = searchResults.splice(0, 1000);
-
         // Reset search container before every search
         $('.search-results').html('');
         $('.search-results-container h1').show();
@@ -80,6 +77,10 @@
         if (searchResults.length === 0) {
             $('.search-results').append('<h3>Nothing Found</h3>')
         };
+
+        var firstThousand = searchResults.splice(0, 1000);
+        var remaining = searchResults.splice(0, 1000);
+
 
         for (var i = 0, ii = firstThousand.length; i < ii ; i++) {
             $('.search-results').append(
