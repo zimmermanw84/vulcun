@@ -78,20 +78,26 @@
             $('.search-results').append('<h3>Nothing Found</h3>')
         };
 
+        if (searchResults[0].error) {
+            $('.search-results-container h1').hide();
+            alert('Please search for an actual email or phone number');
+        };
+
         var firstThousand = searchResults.splice(0, 1000);
         var remaining = searchResults.splice(0, 1000);
 
         for (var i = 0, ii = firstThousand.length; i < ii ; i++) {
             $('.search-results').append(
-                        "<li>" + JSON.parse(firstThousand[i].profile).email + " - " +
-                        firstThousand[i].username + " - " + JSON.parse(firstThousand[i].profile).phone + "</li>"
+                        "<li>"  + firstThousand[i].id + " - " + JSON.parse(firstThousand[i].profile).email + " - " +
+                        firstThousand[i].username + " - " +
+                        JSON.parse(firstThousand[i].profile).phone + "</li>"
                         )
         };
 
         var renderRemainingResults = function(results) {
                 for (var i = 0, ii = results.length; i < ii ; i++) {
                     $('.search-results').append(
-                                "<li>" + JSON.parse(results[i].profile).email + " - " +
+                                "<li>" + results[i].id + " - " + JSON.parse(results[i].profile).email + " - " +
                                 results[i].username + " - " + JSON.parse(results[i].profile).phone + "</li>"
                                 )
                 };
