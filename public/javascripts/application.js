@@ -103,7 +103,9 @@
                 };
         };
 
-        // Hacky Lazy loading
+        // Interval Data loading
+        // Not very necessary now due to improved search query
+        // But still good for rendering tens of thousands of results if need be
         function continueRendering() {
             renderRemainingResults(remaining);
             remaining = remaining.splice(0, 500)
