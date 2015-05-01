@@ -83,6 +83,7 @@
             alert('Please search for an actual email or phone number');
         };
 
+        // Would not normaly declare var here but thats a side effect of destructive splice
         var firstThousand = searchResults.splice(0, 1000);
         var remaining = searchResults.splice(0, 1000);
 
@@ -120,11 +121,11 @@
 
         function myStopFunction() {
             clearInterval(intervalRendering);
-        }
+        };
 
         if (remaining.length <= 0) {
             myStopFunction();
-        }
+        };
 
     };
 
