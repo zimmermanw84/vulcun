@@ -72,9 +72,11 @@ router.post('/users/profile', function(req, res) {
       .then(function(user) {
         user.updateAttributes({
           profile: JSON.stringify(req.body)
-        }).then(function(user) {
+        })
+        .then(function(user) {
           res.end(JSON.stringify(req.body));
-        }).fail(function (err) {
+        })
+        .fail(function (err) {
           res.send('Something went wrong. Try again')
         })
       });
